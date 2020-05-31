@@ -20,9 +20,9 @@ public class ABB {
         //Buscar onde inserir o novo
         while (p != null) {
             pai = p;
-            if (palavra.compareTo(p.getPalavra()) > 0) {
+            if (palavra.compareToIgnoreCase(p.getPalavra()) < 0) {
                 p = p.getEsq();
-            } else if (palavra.compareTo(p.getPalavra()) < 0) {
+            } else if (palavra.compareToIgnoreCase(p.getPalavra()) > 0) {
                 p = p.getDir();
             } else {
                 p.setCont(p.getCont() + 1);
@@ -32,13 +32,16 @@ public class ABB {
         //Árvore vazia
         if (pai == null) {
             raiz = novo;
-        } else if (palavra.compareTo(p.getPalavra()) > 0) {
-            pai.setEsq(novo);
         } else {
-            pai.setDir(novo);
+            if (palavra.compareToIgnoreCase(pai.getPalavra()) < 0) {
+                pai.setEsq(novo);
+            } else {
+                pai.setDir(novo);
+            }
         }
     }
-/*
+
+    /*
     public void insereR(int elemento) {
         No novo = new No(elemento, null, null);
         if (raiz == null) {
@@ -61,22 +64,22 @@ public class ABB {
             insereR(p.getDir(), novo);
         }
     }
-*/
-    //      MUDAR A LOGICA PARA USAR O PREORDEM COMUM
-    public void listarFrequencia(List<Frequencia> lista){
-        
+     */
+//      MUDAR A LOGICA PARA USAR O PREORDEM COMUM
+    public void listarFrequencia(List<Frequencia> lista) {
+
         listarFrequencia(lista, raiz);
     }
-    
-    private void listarFrequencia(List<Frequencia>lista, No p) {
-       
-        if (p != null){
-           listarFrequencia(lista, p.getEsq());
-           lista.add(new Frequencia(p.getPalavra(),p.getCont()));
-           listarFrequencia(lista, p.getDir());
-       }
+
+    private void listarFrequencia(List<Frequencia> lista, No p) {
+
+        if (p != null) {
+            listarFrequencia(lista, p.getEsq());
+            lista.add(new Frequencia(p.getPalavra(), p.getCont()));
+            listarFrequencia(lista, p.getDir());
+        }
     }
-    
+
     @Override
     public String toString() {
         return "ABB{" + "raiz=" + raiz + '}';
@@ -117,7 +120,6 @@ public class ABB {
            System.out.print(p.getElemento() + " ");
        }
     }*/
-
     public No buscaIt(String palavra) {
         No p = raiz;
 
@@ -134,7 +136,7 @@ public class ABB {
         return null; //Não achou
 
     }
-/*
+    /*
     public No buscaR(int elemento) {
         return buscaR(raiz, elemento);
     }
@@ -152,7 +154,7 @@ public class ABB {
             return buscaR(p.getDir(), elemento);
         }
     }*/
-    /*
+ /*
     public int contaNos(){
         return contaNos(raiz);
     }
