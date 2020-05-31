@@ -27,7 +27,8 @@ public class TestaFreqPalavra {
         try {
             escritor = new FileWriter(arquivo);
             for (Frequencia freq : frequencia) {
-                String linha = String.format("%s -> apareceu %d vezes\n", freq.getPalavra(), freq.getFrequencia());
+                String linha = String.format("%s -> apareceu %d %s\n",
+                        freq.getPalavra(), freq.getFrequencia(), ((freq.getFrequencia() > 1) ? "vez" : "vezes"));
                 escritor.append(linha);
             }
             escritor.close();
