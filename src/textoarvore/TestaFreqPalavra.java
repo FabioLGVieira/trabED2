@@ -15,10 +15,10 @@ import java.util.List;
 public class TestaFreqPalavra {
 
     public static void main(String[] args) {
-
-        String sb = leArquivo("original");
-        List<Frequencia> freq = ListaPalavra(sb);
-        EscreveArquivo("listaFrequencia", freq);
+ 
+        String sb = leArquivo("original"); // ARQUIVO ORIGINAL 
+        List<Frequencia> freq = ListaPalavra(sb); // CHAMA O MÉTODO LISTA PALAVRA PASSANDO SB(ARQUIVO)
+        EscreveArquivo("listaFrequencia", freq); // ESCREVE NO ARQUIVO 
     }
 
     static void EscreveArquivo(String novoNome, List<Frequencia> frequencia) {
@@ -28,7 +28,7 @@ public class TestaFreqPalavra {
             escritor = new FileWriter(arquivo);
             for (Frequencia freq : frequencia) {
                 String linha = String.format("%s -> apareceu %d %s\n",
-                        freq.getPalavra(), freq.getFrequencia(), ((freq.getFrequencia() > 1) ? "vez" : "vezes"));
+                        freq.getPalavra(), freq.getFrequencia(), ((freq.getFrequencia() > 1) ? "vezes" : "vez"));
                 escritor.append(linha);
             }
             escritor.close();
@@ -49,17 +49,6 @@ public class TestaFreqPalavra {
 
             while ((linha = br.readLine()) != null) {
                 sb.append(linha);
-
-                /*
-                
-                ARRUMAR A CLASSE 'ABB' ANTES DAQUI
-                
-                le o arquivo
-                adiciona a primeira palavra como raiz
-                usa o metodo compareTo pra ver se ta alfabetico e adiciona
-                se ja estiver adicionado aumenta contador
-                no fim do texto, faz uma lista em ordem alfabetica e com a quantidade de vezes que apareceu cada palavra
-                 */
             }
 
         } catch (IOException e) {
@@ -69,20 +58,20 @@ public class TestaFreqPalavra {
     }
 
     //metodo que gera a alista a partir da leitura da arvore PREORDEM
-    private static List<Frequencia> ListaPalavra(String sb) {
-        ABB abb = StringToArvore(sb);
-        List<Frequencia> freq = new ArrayList<Frequencia>();
-        abb.listarFrequencia(freq);
+    private static List<Frequencia> ListaPalavra(String sb) { //
+        ABB abb = StringToArvore(sb); // CHAMA O MÉTODO StringToArvore PASSANDO A STRING SB (ARQUIVO)
+        List<Frequencia> freq = new ArrayList<Frequencia>(); // CRIA UMA LISTA DO OBJETO FREQUENCIA 
+        abb.listarFrequencia(freq); // RETORNA UMA LISTA COM TODOS OS ELEMENTOS DA ARVORE 
 
-        return freq;
+        return freq; // RETORNA A LISTA PARA O MAIN
     }
 
     private static ABB StringToArvore(String sb) {
-        ABB abb = new ABB();
-        String[] palavras = sb.split("([ \\/,.\\-+=@*$%()!&']){1,5}");
-        for (String palavra : palavras) {//adiciona as palavras na arvore, e o metodo insere ja incrementa caso exista
-            abb.insere(palavra);
+        ABB abb = new ABB(); // ARVORE BINÁRIA (OBJETO)
+        String[] palavras = sb.split("([ \\/,.\\-+=@*$%()!&']){1,5}"); // DIVIDIR EM UM VETOR DE PALAVRAS 
+        for (String palavra : palavras) {//ENQUANTO TIVER PALAVRAS NO VETOR INSERE NA ARVORE 
+            abb.insere(palavra); // INSERE A PALAVVRA QUE ESTÁ NO VETOR NA ARVORE 
         }
-        return abb;
+        return abb; // RETORNA A ARVORE PARA O LISTAPALAVRA
     }
 }

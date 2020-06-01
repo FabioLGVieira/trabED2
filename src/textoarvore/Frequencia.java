@@ -1,13 +1,15 @@
+// VE QUANTAS VEZES A PALAVRA APARECE
 package textoarvore;
-    public class Frequencia { //struct
 
-        private String palavra;
-        private int frequencia;
+public class Frequencia { //struct
 
-        Frequencia(String palavra,int freq) {
-            this.palavra = palavra;
-            this.frequencia = freq;
-        }
+    private String palavra;
+    private int frequencia;
+
+    Frequencia(String palavra, int freq) {
+        this.palavra = palavra;
+        this.frequencia = freq;
+    }
 
     public String getPalavra() {
         return palavra;
@@ -16,6 +18,4 @@ package textoarvore;
     public int getFrequencia() {
         return frequencia;
     }
-        
-        
-    }
+}
