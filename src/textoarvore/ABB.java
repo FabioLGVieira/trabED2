@@ -1,7 +1,6 @@
 package textoarvore;
 
 import java.util.List;
-import textoarvore.Frequencia;
 
 public class ABB {
 

@@ -3,12 +3,10 @@ package textoarvore;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +58,7 @@ public class TestaFreqPalavra {
     //metodo que gera a alista a partir da leitura da arvore PREORDEM
     private static List<Frequencia> ListaPalavra(String sb) { //
         ABB abb = StringToArvore(sb); // CHAMA O MÉTODO StringToArvore PASSANDO A STRING SB (ARQUIVO)
-        List<Frequencia> freq = new ArrayList<Frequencia>(); // CRIA UMA LISTA DO OBJETO FREQUENCIA 
+        List<Frequencia> freq = new ArrayList<>(); // CRIA UMA LISTA DO OBJETO FREQUENCIA 
         abb.listarFrequencia(freq); // RETORNA UMA LISTA COM TODOS OS ELEMENTOS DA ARVORE 
 
         return freq; // RETORNA A LISTA PARA O MAIN
